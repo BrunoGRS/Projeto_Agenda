@@ -21,7 +21,7 @@
         {% for contact in contacts %}
           <tr class="table-row">
             <td class="table-cel">
-              <a class="table-link" href="#">
+              <a class="table-link" href="{% url 'shedule:contact' contact.id %}">
                 {{ contact.id }}
               </a>
             </td>
@@ -32,7 +32,7 @@
               {{ contact.last_name }}
             </td>
             <td class="table-cel">
-              {{ contact.phone }}
+              {{ contact.phone_number }}
             </td>
             <td class="table-cel">
               {{ contact.email }}
