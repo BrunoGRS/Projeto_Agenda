@@ -1,12 +1,12 @@
 {% extends "global/base.html" %}
 
 {% block content %}
+{% if page_obj %}
   <div class="responsive-table">
     <table class="contacts-table">
       <caption class="table-caption ">
-        Contacts
+        Contatos
       </caption>
-
       <thead>
         <tr class="table-row table-row-header">
           <th class="table-header">ID</th>
@@ -18,10 +18,10 @@
       </thead>
 
       <tbody>
-        {% for contact in contacts %}
+        {% for contact in page_obj %}
           <tr class="table-row">
             <td class="table-cel">
-              <a class="table-link" href="{% url 'shedule:contact' contact.id %}">
+              <a class="table-link" href="{% url 'schedule:contact' contact.id %}">
                 {{ contact.id }}
               </a>
             </td>
@@ -42,4 +42,10 @@
       </tbody>
     </table>
   </div>
+{% else %}
+<div class="single-contact">
+  <h1 class="single-contact-name">
+    Nenhum contato encontrado!
+  </h1>
+{% endif %}
 {% endblock content %}

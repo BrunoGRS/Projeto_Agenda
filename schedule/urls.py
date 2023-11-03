@@ -2,9 +2,11 @@ from django.contrib import admin
 from django.urls import path
 from . import views
 
-app_name = 'shedule'
+app_name = 'schedule'
 
 urlpatterns = [
-    path('<int:contact_id>/', views.contact, name='contact'),
+    path('schedule/create/', views.create_contact, name='create'),
+    path('contact/<int:contact_id>/details/', views.contact, name='contact'),
+    path('search/', views.search, name='search'),
     path('', views.index, name='index'),
 ]

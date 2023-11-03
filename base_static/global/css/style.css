@@ -302,7 +302,7 @@
     cursor: pointer;
     transition: filter var(--transition-fast) ease-in-out;
   }
-  
+
   .btn:hover {
     filter: brightness(90%);
   }
