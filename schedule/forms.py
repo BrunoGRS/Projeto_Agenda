@@ -3,6 +3,7 @@ from django import forms
 from .models import Contact
 from django.core.exceptions import ValidationError
 import re
+from schedule.models import Contact
 
 class ContactForm(forms.ModelForm):
     
@@ -19,6 +20,7 @@ class ContactForm(forms.ModelForm):
             'phone_number': forms.TextInput(attrs={'placeholder': 'Digite o número de telefone'}),
             'email': forms.TextInput(attrs={'placeholder': 'Digite o e-mail'}),
             'description': forms.Textarea(attrs={'placeholder': 'Conte mais...'}),
+            'picture': forms.ImageField(),
         }
         
     
@@ -30,16 +32,12 @@ class ContactForm(forms.ModelForm):
         
         return first_name
     
-    def clean_same_name(self):
-        first_name = self.cleaned_data.get('first_name')
+    def clean_last_name(self):
         last_name = self.cleaned_data.get('last_name')
-        
-        if first_name == last_name:
-            self.add_error('last_name', ValidationError('O Último nome e o Primeiro Nome não podem ser iguais.', code='invalid'))
             
-        if len(las) < 3:
-            self.add_error('first_name',ValidationError('O nome deve possuir no mínimo 3 caracteres!', code= 'invalid'))
-            
+        if len(last_name) < 3:
+            self.add_error('last_name',ValidationError('O nome deve possuir no mínimo 3 caracteres!', code= 'invalid'))
+
         return last_name
             
     def clean_email(self):

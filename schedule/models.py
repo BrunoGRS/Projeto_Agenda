@@ -18,7 +18,7 @@ class Contact(models.Model):
         verbose_name_plural = 'Contacts'
         
     first_name = models.CharField(max_length=50, verbose_name='Primeiro Nome')
-    last_name = models.CharField(max_length=50, verbose_name='último Nome')
+    last_name = models.CharField(max_length=50, verbose_name='Último Nome')
     phone_number = models.CharField(max_length=15, verbose_name='Telefone')
     email = models.EmailField(max_length=50, blank=True)
     created_date = models.DateTimeField(default=timezone.now, verbose_name='Data de Criação')
