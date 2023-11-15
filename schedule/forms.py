@@ -19,8 +19,7 @@ class ContactForm(forms.ModelForm):
             'last_name': forms.TextInput(attrs={'placeholder': 'Escreva Aqui'}),
             'phone_number': forms.TextInput(attrs={'placeholder': 'Digite o número de telefone'}),
             'email': forms.TextInput(attrs={'placeholder': 'Digite o e-mail'}),
-            'description': forms.Textarea(attrs={'placeholder': 'Conte mais...'}),
-            'picture': forms.ImageField(),
+            'description': forms.Textarea(attrs={'placeholder': 'Conte mais...'})
         }
         
     
