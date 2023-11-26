@@ -42,7 +42,7 @@ def update(request, contact_id):
         
         if form.is_valid():
             contact = form.save()
-            return redirect('schedule:update', contact_id=contact.id)
+            return redirect('schedule:contact', contact_id=contact.id)
             
         return render(request, template_name='schedule/create.html', context=context)
         

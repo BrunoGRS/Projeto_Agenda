@@ -4,6 +4,8 @@ from .models import Contact
 from django.core.exceptions import ValidationError
 import re
 from schedule.models import Contact
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 class ContactForm(forms.ModelForm):
     
@@ -48,3 +50,16 @@ class ContactForm(forms.ModelForm):
             self.add_error('email', ValidationError('Endereço de e-mail inválido', code='invalid'))
             
         return email
+    
+class RegisterForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name', 'email', 'username', 'password1', 'password2')
+        
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        
+        if User.objects.filter(email=email).exists():
+            self.add_error('email',ValidationError('Endereço de e-mail já cadastro', code='invalid'))
+        else:
+            return email
